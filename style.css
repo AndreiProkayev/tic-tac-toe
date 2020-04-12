@@ -9,7 +9,6 @@ body {
 
 .container {
   height: 75%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +29,7 @@ body {
   line-height: 125px;
   width: 225px;
   height: 125px;
-  background-color: #946892;
+  background-color: lightgray;
   margin: 2px;
   text-align: center;
   text-transform: uppercase;
