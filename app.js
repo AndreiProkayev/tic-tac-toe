@@ -24,4 +24,4 @@ for (const cell of cells) {
   });
 }
 
-const winner = () => {};
+
