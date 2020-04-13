@@ -1,61 +1,59 @@
-const cells = document.getElementsByClassName("cell"); // [התאים שלנו]
-const players = document.getElementsByClassName("player"); // [השחקנים שלמעלה - איקס ועיגול]
+const cells = document.querySelectorAll(".cell"); // all cell elements
+const players = document.querySelectorAll(".player"); // all player elements
+const allRows = document.querySelectorAll(".row"); // all row elements
 
-const firstRow = document.querySelector(".row"); // השורה הראשונה
-const firstRowCells = firstRow.getElementsByClassName("cell"); // התאים של השורה הראשונה
+let turn = "X"; // current turn
 
-let turn = "X"; // התור הנוכחי
+players[0].classList.add("selected"); // changing the first player element's color to salmon
 
-players[0].classList.add("selected"); // הצבע של הפלייר הראשון מתחלף לכתום
-
+// Changes turn from 'x' to 'o' and vice versa
 function changeTurn() {
   if (turn === "O") {
-    // אם התור הוא עיגול
-    turn = "X"; // התור הופך להיות איקס
-    players[1].classList.add("selected"); // הצבע של הפלייר השני מתחלף לכתום
-    players[0].classList.remove("selected"); // הצבע של הפלייר הראשון חוזר לאפור
+    turn = "X";
+    players[1].classList.add("selected"); // second player's color changes to salmon
+    players[0].classList.remove("selected"); // first player's color changes back to gray
   } else if (turn === "X") {
-    // אחרת אם התור הוא איקס
-    turn = "O"; // התור הופך להיות עיגול
-    players[0].classList.add("selected"); // הצבע של הפלייר הראשון מתחלף לכתום
-    players[1].classList.remove("selected"); // הצבע של הפלייר השני מתחלף לאפור
+    turn = "O";
+    players[0].classList.add("selected"); // first player's color changes to salmon
+    players[1].classList.remove("selected"); // second player's color changes back to gray 
   }
 }
 
-function checkVictoryOfFirstRow() {
-  if (
-    firstRowCells[0].textContent === "X" &&
-    firstRowCells[1].textContent === "X" &&
-    firstRowCells[2].textContent === "X"
-  ) {
-    alert("Victory!!!!");
+// Checking if one of the rows has 'X' in all cells
+function checkVictoryOfAllRows() {
+  for (const row of allRows) {
+    const rowCells = row.getElementsByClassName('cell'); // cells of each row
+
+    // תבדוק את התוכן של כל תא במערך - אם הוא איקס
   }
 }
 
+// loops over cell elements
 for (const cell of cells) {
-  // לופ על התאים
+  // adds click event listener to each cell
   cell.addEventListener("click", () => {
-    // מוסיף קליק איבנט על כל תא
+    // if cell is empty
     if (cell.textContent === "") {
-      // אם התא ריק
-      cell.textContent = turn; // הטקסט של התא הוא התור
+      // add turn symbol ('x' or 'o') to cell
+      cell.textContent = turn;
+      // and change turn
       changeTurn();
     }
 
-    checkVictoryOfFirstRow();
+    // check victory of first row
+    checkVictoryOfAllRows();
   });
 }
 
 /**
- * שיעורי בית
- * לבדוק את התאים בכל השורות
- * האם יש בהם איקס
- *
- * אתה צריך לקבל את כל השורות
- * להבין האם בתאים שלהם יש איקס
- * ואם באחת מהן יש איקס בכל התאים
- * לעשות אלרט
- *
- * loop
- * if()
+ * Homework
+ * After you checked if each cell in row has X in it
+ * Check if the cells have X or O
+ * I mean, X X X or O O O
+ * 
+ * Bonus:
+ * Do it on a column (טור)
+ * X
+ * X
+ * X
  */
