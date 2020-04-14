@@ -15,14 +15,21 @@ function changeTurn() {
   } else if (turn === "X") {
     turn = "O";
     players[0].classList.add("selected"); // first player's color changes to salmon
-    players[1].classList.remove("selected"); // second player's color changes back to gray 
+    players[1].classList.remove("selected"); // second player's color changes back to gray
   }
 }
 
 // Checking if one of the rows has 'X' in all cells
 function checkVictoryOfAllRows() {
   for (const row of allRows) {
-    const rowCells = row.getElementsByClassName('cell'); // cells of each row
+    const rowCells = row.getElementsByClassName("cell"); // cells of each row
+    if (
+      rowCells[0].textContent === "X" &&
+      rowCells[1].textContent === "X" &&
+      rowCells[2].textContent === "X"
+    ) {
+      alert("victory");
+    }
 
     // תבדוק את התוכן של כל תא במערך - אם הוא איקס
   }
@@ -50,7 +57,7 @@ for (const cell of cells) {
  * After you checked if each cell in row has X in it
  * Check if the cells have X or O
  * I mean, X X X or O O O
- * 
+ *
  * Bonus:
  * Do it on a column (טור)
  * X
