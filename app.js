@@ -19,19 +19,21 @@ function changeTurn() {
   }
 }
 
-// Checking if one of the rows has 'X' in all cells
-function checkVictoryOfAllRows() {
+// Checking victory of all rows
+function checkRows() {
   for (const row of allRows) {
-    const rowCells = row.getElementsByClassName("cell"); // cells of each row
-    if (
-      rowCells[0].textContent === "X" &&
-      rowCells[1].textContent === "X" &&
-      rowCells[2].textContent === "X"
-    ) {
-      alert("victory");
+    const rowCells = row.getElementsByClassName("cell");
+    const firstCell = rowCells[0].textContent;
+    const secondCell = rowCells[1].textContent;
+    const thirdCell = rowCells[2].textContent;
+
+    if (firstCell === "" && secondCell === "" && thirdCell === "") {
+      continue;
     }
 
-    // תבדוק את התוכן של כל תא במערך - אם הוא איקס
+    if (firstCell === secondCell && secondCell === thirdCell) {
+      alert("victory!");
+    }
   }
 }
 
@@ -47,20 +49,17 @@ for (const cell of cells) {
       changeTurn();
     }
 
-    // check victory of first row
-    checkVictoryOfAllRows();
+    // check victory of all rows
+    checkRows();
   });
 }
 
 /**
  * Homework
- * After you checked if each cell in row has X in it
- * Check if the cells have X or O
- * I mean, X X X or O O O
+ * - Check victory of columns
  *
- * Bonus:
- * Do it on a column (טור)
- * X
- * X
- * X
+ *  Hints:
+ *  You can do it with a loop OR NOT!
+ *
+ * - After this, check slants
  */
