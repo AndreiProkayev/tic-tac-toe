@@ -37,6 +37,12 @@ function checkRows() {
   }
 }
 
+function checkColumn() {
+  const allFirstColumnsCells = document.querySelectorAll(".firstCell");
+  const allSecondColumnsCells = document.querySelectorAll(".secondCell");
+  const allThirdColumsnCells = document.querySelectorAll(".thirdCell");
+}
+
 // loops over cell elements
 for (const cell of cells) {
   // adds click event listener to each cell
@@ -50,10 +56,9 @@ for (const cell of cells) {
     }
 
     // check victory of all rows
-    checkRows();
+    checkRows(), checkColumn();
   });
 }
-
 /**
  * Homework
  * - Check victory of columns
