@@ -1,6 +1,9 @@
 const cells = document.querySelectorAll(".cell"); // all cell elements
 const players = document.querySelectorAll(".player"); // all player elements
 const allRows = document.querySelectorAll(".row"); // all row elements
+const allFirstCells = document.querySelectorAll(".firstCell"); // All the first cells
+const allSecondCells = document.querySelectorAll(".secondCell"); // All the second cells
+const allThirdCells = document.querySelectorAll(".thirdCell"); // All the third cells
 
 let turn = "X"; // current turn
 
@@ -27,7 +30,8 @@ function checkRows() {
     const secondCell = rowCells[1].textContent;
     const thirdCell = rowCells[2].textContent;
 
-    if (firstCell === "" && secondCell === "" && thirdCell === "") {
+
+    if (!firstCell && !secondCell && !thirdCell) {
       continue;
     }
 
@@ -37,10 +41,24 @@ function checkRows() {
   }
 }
 
-function checkColumn() {
-  const allFirstColumnsCells = document.querySelectorAll(".firstCell");
-  const allSecondColumnsCells = document.querySelectorAll(".secondCell");
-  const allThirdColumsnCells = document.querySelectorAll(".thirdCell");
+function checkColumns() {
+  // WRITE HERE WHAT IS GOING ON
+  const cells = [allFirstCells, allSecondCells, allThirdCells];
+
+  // WRITE HERE WHAT IS GOING ON
+  for (const columnCells of cells) {
+    // WRITE HERE WHAT IS GOING ON
+    if (!columnCells[0].textContent && !columnCells[1].textContent && !columnCells[2].textContent) {
+      // WRITE HERE WHAT IS GOING ON
+      continue;
+    }
+
+    // WRITE HERE WHAT IS GOING ON
+    if (columnCells[0].textContent === columnCells[1].textContent && columnCells[1].textContent === columnCells[2].textContent) {
+      // WRITE HERE WHAT IS GOING ON
+      alert('victory!')
+    }
+  }
 }
 
 // loops over cell elements
@@ -56,7 +74,8 @@ for (const cell of cells) {
     }
 
     // check victory of all rows
-    checkRows(), checkColumn();
+    checkRows();
+    checkColumns();
   });
 }
 /**
