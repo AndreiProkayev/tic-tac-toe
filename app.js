@@ -46,7 +46,7 @@ function checkColumns() {
 
   // looping on all columns cells, variable columnCells represent all the cells in the column
   for (const columnCells of cells) {
-    // if the text in the cells is false, continue
+    // check is for the case of an empty string: ''. It is falsy but not false
     if (
       !columnCells[0].textContent &&
       !columnCells[1].textContent &&
@@ -66,6 +66,35 @@ function checkColumns() {
   }
 }
 
+function checkDiagonals() {
+  if (
+    !allFirstCells[0].textContent &&
+    !allSecondCells[1].textContent &&
+    !allThirdCells[2].textContent
+  ) {
+    return;
+  }
+  if (
+    allFirstCells[0].textContent === allSecondCells[1].textContent &&
+    allSecondCells[1].textContent === allThirdCells[2].textContent
+  ) {
+    alert("Victory");
+  }
+  if (
+    !allThirdCells[0].textContent &&
+    !allSecondCells[1].textContent &&
+    !allFirstCells[2].textContent
+  ) {
+    return;
+  }
+  if (
+    allThirdCells[0].textContent === allSecondCells[1].textContent &&
+    allSecondCells[1].textContent === allFirstCells[2].textContent
+  ) {
+    alert("Victory");
+  }
+}
+
 // loops over cell elements
 for (const cell of cells) {
   // adds click event listener to each cell
@@ -81,6 +110,7 @@ for (const cell of cells) {
     // check victory of all rows
     checkRows();
     checkColumns();
+    checkDiagonals();
   });
 }
 /**
