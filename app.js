@@ -30,7 +30,6 @@ function checkRows() {
     const secondCell = rowCells[1].textContent;
     const thirdCell = rowCells[2].textContent;
 
-
     if (!firstCell && !secondCell && !thirdCell) {
       continue;
     }
@@ -40,23 +39,29 @@ function checkRows() {
     }
   }
 }
-
+// Checking victory of all columns
 function checkColumns() {
-  // WRITE HERE WHAT IS GOING ON
+  // variable cells is array whit all columns cells
   const cells = [allFirstCells, allSecondCells, allThirdCells];
 
-  // WRITE HERE WHAT IS GOING ON
+  // looping on all columns cells, variable columnCells represent all the cells in the column
   for (const columnCells of cells) {
-    // WRITE HERE WHAT IS GOING ON
-    if (!columnCells[0].textContent && !columnCells[1].textContent && !columnCells[2].textContent) {
-      // WRITE HERE WHAT IS GOING ON
+    // if the text in the cells is false, continue
+    if (
+      !columnCells[0].textContent &&
+      !columnCells[1].textContent &&
+      !columnCells[2].textContent
+    ) {
       continue;
     }
 
-    // WRITE HERE WHAT IS GOING ON
-    if (columnCells[0].textContent === columnCells[1].textContent && columnCells[1].textContent === columnCells[2].textContent) {
-      // WRITE HERE WHAT IS GOING ON
-      alert('victory!')
+    // if the text in the first cell of the column equal to the text in the second cell, and the text in the second cell equal to the text in the third cell
+    if (
+      columnCells[0].textContent === columnCells[1].textContent &&
+      columnCells[1].textContent === columnCells[2].textContent
+    ) {
+      // alert victory string
+      alert("victory!");
     }
   }
 }
